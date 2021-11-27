@@ -1,11 +1,13 @@
 #include <iostream>
 #include <math.h>
+#include <algorithm>
 #include <windows.h>
 #include "Functions.h"
 using namespace std;
 
 int main()
 {
+    //Первое изменение 
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
     long double matrix_size;

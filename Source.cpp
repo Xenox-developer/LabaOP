@@ -8,6 +8,7 @@ using namespace std;
 int main()
 {
     //Первое изменение 
+    //Второе изменение
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
     long double matrix_size;

@@ -7,7 +7,8 @@ using namespace std;
 
 int main()
 {
-    //01
+    //5
+    //0.4
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
     long double matrix_size;

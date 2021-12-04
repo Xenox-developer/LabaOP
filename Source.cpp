@@ -7,6 +7,7 @@ using namespace std;
 
 int main()
 {
+    //04.12.21
     //Первое изменение 
     //Второе изменение
     SetConsoleCP(1251);

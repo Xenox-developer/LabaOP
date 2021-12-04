@@ -8,7 +8,7 @@
 #include <windows.h>
 #include "Functions.h"
 using namespace std;
-//Edited
+//Изменено
 //Функция проверки корректности ввода
 long double cheker(long double& x) {
     std::cin >> x;

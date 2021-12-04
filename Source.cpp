@@ -1,67 +1,49 @@
+//На вход поступает квадратная матрица размером не более [1000,1000]. 
+//Программа ищет значение характеристического полинома (A^3 - 3*A^2 - 3*A + 8E)^2
+//Выполнил Чиндин Никита, ПМИ-13БО
+
 #include <iostream>
-#include <math.h>
 #include <algorithm>
+#include <math.h>
 #include <windows.h>
 #include "Functions.h"
 using namespace std;
 
+//Функция проверки корректности ввода
+long double cheker(long double& x) {
+    std::cin >> x;
+    while (std::cin.fail()) {
+        std::cout << "That input is invalid. Please try again." << std::endl;
+        std::cin.clear();
+        std::cin.ignore(32767, '\n');
+        std::cin >> x;
+    }
+    return x;
+}
+
 int main()
 {
-    //5
-    //0.4
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
+
     long double matrix_size;
-    cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г°Г Г§Г¬ГҐГ° ГЄГўГ Г¤Г°Г ГІГ­Г®Г© Г¬Г ГІГ°ГЁГ¶Г»: ";
-    Cheker(matrix_size);
+    cout << "Введите размер квадратной матрицы: ";
+    cheker(matrix_size);
 
-    long double** matrix = new long double* [matrix_size];
-    Memory_for_array(matrix, matrix_size);
-    cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г¬Г ГІГ°ГЁГ¶Гі:" << "\n";
-    Matrix_Input(matrix, matrix_size);
-
-    long double** characteristic_polynomial = new long double* [matrix_size];
-    Memory_for_array(characteristic_polynomial, matrix_size);
-
-    //Г‚Г»Г·ГЁГ±Г«ГҐГ­ГЁГҐ A^3
-    characteristic_polynomial = Matrix_Power(matrix, matrix_size, 3);
-    cout << "Г‡Г­Г Г·ГҐГ­ГЁГҐ A^3:\n";
-    Output(characteristic_polynomial, matrix_size);
-
-    //Г‚Г»Г·ГЁГ±Г«ГҐГ­ГЁГҐ A^2
-    characteristic_polynomial = Matrix_Power(matrix, matrix_size, 2);
-    cout << "Г‡Г­Г Г·ГҐГ­ГЁГҐ A^2:\n";
-    Output(characteristic_polynomial, matrix_size);
-
-    //Г‚Г»Г·ГЁГ±Г«ГҐГ­ГЁГҐ A^3 - 3*A^2
-    characteristic_polynomial = Subtraction(Matrix_Power(matrix, matrix_size, 3), Multiply_on_num(characteristic_polynomial, matrix_size, 3), matrix_size);
-    cout << "Г‡Г Г­Г·ГҐГ­ГЁГҐ A^3 - 3*A^2:\n";
-    Output(characteristic_polynomial, matrix_size);
-
-    //Г‚Г»Г·ГЁГ±Г«ГҐГ­ГЁГҐ A^3 - 3*A^2 - 3*A
-    characteristic_polynomial = Subtraction(characteristic_polynomial, Multiply_on_num(matrix, matrix_size, 3), matrix_size);
-    cout << "Г‡Г­Г Г·ГҐГ­ГЁГҐ A^3 - 3*A^2 - 3*A:\n";
-    Output(characteristic_polynomial, matrix_size);
-
+    //единичная матрица
     long double** identity_matrix = new long double* [matrix_size];
-    Identity_matrix(identity_matrix, matrix_size);
-    cout << "Г…Г¤ГЁГ­ГЁГ·Г­Г Гї Г¬Г ГІГ°ГЁГ¶Г  E:\n";
-    Output(identity_matrix, matrix_size);
 
-    //Г‚Г»Г·ГЁГ±Г«ГҐГ­ГЁГҐ A^3 - 3*A^2 - 3*A + 8E
-    characteristic_polynomial = Summation(characteristic_polynomial, Multiply_on_num(identity_matrix, matrix_size, 8), matrix_size);
-    cout << "Г‡Г­Г Г·ГҐГ­ГЁГҐ A^3 - 3*A^2 - 3*A + 8E:\n";
-    Output(characteristic_polynomial, matrix_size);
+    //матрица пользователя
+    long double** matrix = new long double* [matrix_size];
+    memory_for_array(matrix, matrix_size);
+    cout << "Введите матрицу:" << "\n";
+    matrix_input(matrix, matrix_size);
 
-    //Г‚Г»ГўГ®Г¤ ГµГ Г°Г ГЄГІГҐГ°ГЁГ±ГІГЁГ·ГҐГ±ГЄГ®ГЈГ® ГЇГ®Г«ГЁГ­Г®Г¬Г  (A^3 - 3*A^2 - 3*A + 8E)^2
-    characteristic_polynomial = Matrix_Power(characteristic_polynomial, matrix_size, 2);
-    cout << "Г‡Г­Г Г·ГҐГ­ГЁГҐ ГµГ Г°ГЄГІГҐГ°ГЁГ±ГІГЁГ·ГҐГ±ГЄГ®ГЈГ® ГЇГ®Г«ГЁГ­Г®Г¬Г  (A^3 - 3*A^2 - 3*A + 8E)^2:\n";
-    Output(characteristic_polynomial, matrix_size);
-
-    //ГЋГ·ГЁГ±ГІГЄГ  ГЇГ Г¬ГїГІГЁ
-    Clean_matrix(matrix, matrix_size);
-    Clean_matrix(characteristic_polynomial, matrix_size);
-    Clean_matrix(identity_matrix, matrix_size);
+    //Вывод характеристического полинома (A^3 - 3*A^2 - 3*A + 8E)^2
+    polynomial_solution(matrix, matrix_size);
+        
+    //Очистка памяти
+    clean_matrix(matrix, matrix_size);
 
     system("pause");
     return 0;

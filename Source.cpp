@@ -12,53 +12,53 @@ int main()
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
     long double matrix_size;
-    cout << "Ââåäèòå ðàçìåð êâàäðàòíîé ìàòðèöû: ";
+    cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã°Ã Ã§Ã¬Ã¥Ã° ÃªÃ¢Ã Ã¤Ã°Ã Ã²Ã­Ã®Ã© Ã¬Ã Ã²Ã°Ã¨Ã¶Ã»: ";
     Cheker(matrix_size);
 
     long double** matrix = new long double* [matrix_size];
     Memory_for_array(matrix, matrix_size);
-    cout << "Ââåäèòå ìàòðèöó:" << "\n";
+    cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã¬Ã Ã²Ã°Ã¨Ã¶Ã³:" << "\n";
     Matrix_Input(matrix, matrix_size);
 
     long double** characteristic_polynomial = new long double* [matrix_size];
     Memory_for_array(characteristic_polynomial, matrix_size);
 
-    //Âû÷èñëåíèå A^3
+    //Ã‚Ã»Ã·Ã¨Ã±Ã«Ã¥Ã­Ã¨Ã¥ A^3
     characteristic_polynomial = Matrix_Power(matrix, matrix_size, 3);
-    cout << "Çíà÷åíèå A^3:\n";
+    cout << "Ã‡Ã­Ã Ã·Ã¥Ã­Ã¨Ã¥ A^3:\n";
     Output(characteristic_polynomial, matrix_size);
 
-    //Âû÷èñëåíèå A^2
+    //Ã‚Ã»Ã·Ã¨Ã±Ã«Ã¥Ã­Ã¨Ã¥ A^2
     characteristic_polynomial = Matrix_Power(matrix, matrix_size, 2);
-    cout << "Çíà÷åíèå A^2:\n";
+    cout << "Ã‡Ã­Ã Ã·Ã¥Ã­Ã¨Ã¥ A^2:\n";
     Output(characteristic_polynomial, matrix_size);
 
-    //Âû÷èñëåíèå A^3 - 3*A^2
+    //Ã‚Ã»Ã·Ã¨Ã±Ã«Ã¥Ã­Ã¨Ã¥ A^3 - 3*A^2
     characteristic_polynomial = Subtraction(Matrix_Power(matrix, matrix_size, 3), Multiply_on_num(characteristic_polynomial, matrix_size, 3), matrix_size);
-    cout << "Çàí÷åíèå A^3 - 3*A^2:\n";
+    cout << "Ã‡Ã Ã­Ã·Ã¥Ã­Ã¨Ã¥ A^3 - 3*A^2:\n";
     Output(characteristic_polynomial, matrix_size);
 
-    //Âû÷èñëåíèå A^3 - 3*A^2 - 3*A
+    //Ã‚Ã»Ã·Ã¨Ã±Ã«Ã¥Ã­Ã¨Ã¥ A^3 - 3*A^2 - 3*A
     characteristic_polynomial = Subtraction(characteristic_polynomial, Multiply_on_num(matrix, matrix_size, 3), matrix_size);
-    cout << "Çíà÷åíèå A^3 - 3*A^2 - 3*A:\n";
+    cout << "Ã‡Ã­Ã Ã·Ã¥Ã­Ã¨Ã¥ A^3 - 3*A^2 - 3*A:\n";
     Output(characteristic_polynomial, matrix_size);
 
     long double** identity_matrix = new long double* [matrix_size];
     Identity_matrix(identity_matrix, matrix_size);
-    cout << "Åäèíè÷íàÿ ìàòðèöà E:\n";
+    cout << "Ã…Ã¤Ã¨Ã­Ã¨Ã·Ã­Ã Ã¿ Ã¬Ã Ã²Ã°Ã¨Ã¶Ã  E:\n";
     Output(identity_matrix, matrix_size);
 
-    //Âû÷èñëåíèå A^3 - 3*A^2 - 3*A + 8E
+    //Ã‚Ã»Ã·Ã¨Ã±Ã«Ã¥Ã­Ã¨Ã¥ A^3 - 3*A^2 - 3*A + 8E
     characteristic_polynomial = Summation(characteristic_polynomial, Multiply_on_num(identity_matrix, matrix_size, 8), matrix_size);
-    cout << "Çíà÷åíèå A^3 - 3*A^2 - 3*A + 8E:\n";
+    cout << "Ã‡Ã­Ã Ã·Ã¥Ã­Ã¨Ã¥ A^3 - 3*A^2 - 3*A + 8E:\n";
     Output(characteristic_polynomial, matrix_size);
 
-    //Âûâîä õàðàêòåðèñòè÷åñêîãî ïîëèíîìà (A^3 - 3*A^2 - 3*A + 8E)^2
+    //Ã‚Ã»Ã¢Ã®Ã¤ ÃµÃ Ã°Ã ÃªÃ²Ã¥Ã°Ã¨Ã±Ã²Ã¨Ã·Ã¥Ã±ÃªÃ®Ã£Ã® Ã¯Ã®Ã«Ã¨Ã­Ã®Ã¬Ã  (A^3 - 3*A^2 - 3*A + 8E)^2
     characteristic_polynomial = Matrix_Power(characteristic_polynomial, matrix_size, 2);
-    cout << "Çíà÷åíèå õàðêòåðèñòè÷åñêîãî ïîëèíîìà (A^3 - 3*A^2 - 3*A + 8E)^2:\n";
+    cout << "Ã‡Ã­Ã Ã·Ã¥Ã­Ã¨Ã¥ ÃµÃ Ã°ÃªÃ²Ã¥Ã°Ã¨Ã±Ã²Ã¨Ã·Ã¥Ã±ÃªÃ®Ã£Ã® Ã¯Ã®Ã«Ã¨Ã­Ã®Ã¬Ã  (A^3 - 3*A^2 - 3*A + 8E)^2:\n";
     Output(characteristic_polynomial, matrix_size);
 
-    //Î÷èñòêà ïàìÿòè
+    //ÃŽÃ·Ã¨Ã±Ã²ÃªÃ  Ã¯Ã Ã¬Ã¿Ã²Ã¨
     Clean_matrix(matrix, matrix_size);
     Clean_matrix(characteristic_polynomial, matrix_size);
     Clean_matrix(identity_matrix, matrix_size);

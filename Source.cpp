@@ -7,11 +7,7 @@ using namespace std;
 
 int main()
 {
-    //New commit02020
-    //New commit01010
-    //04.12.21
-    //Первое изменение 
-    //Второе изменение
+    //01
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
     long double matrix_size;
